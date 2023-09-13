@@ -1,11 +1,9 @@
 import React from 'react'
 import { useState } from 'react';
+import {user_icon, email_icon, password_icon} from "../config.js"
 import "../style/Login.css"
-import user_icon from "./Assets/person.png"
-import email_icon from "./Assets/email.png"
-import password_icon from "./Assets/password.png"
 
-function SignUp() {
+function Login() {
   
   return (
     <div className='container'>
@@ -33,4 +31,4 @@ function SignUp() {
   )
 }
 
-export default SignUp
+export default Login

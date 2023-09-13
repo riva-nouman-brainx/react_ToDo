@@ -1,18 +1,16 @@
 import React from 'react'
 import { useState } from 'react';
 import "../style/SignUp.css"
-import user_icon from "./Assets/person.png"
-import email_icon from "./Assets/email.png"
-import password_icon from "./Assets/password.png"
+import {user_icon, email_icon, password_icon} from "../config.js"
+import {isValidUsernameRegex, isValidPasswordRegex, isValidEmailRegex} from "../config.js"
+
+
 
 function SignUp() {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirm, setConfirm] = useState('');
-  const isValidUsernameRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-  const isValidPasswordRegex = /^(?=.*[A-Z]).{8,}$/;
-  const isValidEmailRegex = /^[a-zA-Z0-9_-]{3,}$/;
   const [usernameValid, setUsernameValid] = useState(true);
   const [emailValid, setEmailValid] = useState(true);
   const [passwordValid, setPasswordValid] = useState(true);
