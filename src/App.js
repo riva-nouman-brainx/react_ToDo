@@ -1,4 +1,5 @@
 import './App.css';
+import EmailConfirm from './components/EmailConfirm';
 import Login from './components/Login.jsx'; 
 import SignUp from './components/SignUp.jsx'; 
 
@@ -9,6 +10,7 @@ function App() {
     <div>
       <SignUp/>
       <Login/>
+      <EmailConfirm/>
     </div>
   );
 }
