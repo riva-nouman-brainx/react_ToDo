@@ -23,6 +23,7 @@ function Login() {
           </div>
         </div>
         <div className="forgot-password">Forgot your password? <span>Click here</span> </div>
+        <div className="forgot-password">Create a new account <span> Sign Up </span></div>
         <div className="submit-container">
           <button className="submit"> Login</button>
         </div>
