@@ -1,6 +1,7 @@
 import React from 'react'
 import {password_icon} from "../config.js"
 import "../style/EmailConfirm.css"
+import { Link } from 'react-router';
 
 function EmailConfirm() {
   return (

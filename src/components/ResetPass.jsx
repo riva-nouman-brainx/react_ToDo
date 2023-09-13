@@ -3,7 +3,7 @@ import { useState } from 'react';
 import {user_icon, email_icon, password_icon} from "../config.js"
 import {isValidUsernameRegex, isValidPasswordRegex, isValidEmailRegex} from "../config.js"
 import "../style/ResetPass.css"
-
+import {Link} from "react-router-dom"
 
 
 function ResetPass() {
@@ -46,7 +46,7 @@ function ResetPass() {
             {!confirmValid && <div className="error-message">Password does not match</div>}
           </div>
         </div>
-        <div className="login">Back to <span>Login</span> </div>
+        <div className="login">Back to <span><Link to="/"> Login</Link></span> </div>
         <div className="submit-container">
           <button className="submit"> Confirm</button>
         </div>

@@ -1,7 +1,7 @@
 import React from 'react'
 import {email_icon} from "../config.js"
 import "../style/ForgotPass.css"
-
+import { Link } from 'react-router-dom';
 
 function ForgotPass() {
   return (
@@ -17,7 +17,7 @@ function ForgotPass() {
           <input type="email" placeholder='Email'/>
         </div>
       </div>
-      <div className="back">Back to <span> Login </span>  </div>
+      <div className="back">Back to <span><Link to="/"> Login </Link></span>  </div>
       <div className="submit-container">
         <button className="submit"> Confirm </button>
       </div>
