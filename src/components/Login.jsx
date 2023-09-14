@@ -15,39 +15,33 @@ function Login() {
 
   function handleEmail(e){
     setEmail(e.target.value);
-    if(localStorage.getItem(email)!=null){
-      setEmailValid(true);
-      setErrorEmail('');
-    }
-    else{
-      setEmailValid(false);
-      setErrorEmail("Account across this email does not exist");
-    }
-
   }
   function handlePassword(e){
     setPassword(e.target.value);
-    const userData = JSON.parse(localStorage.getItem(email));
-    if(userData.password===password){
-      setPassValid(true);
-      setErrorPassword('');
-    }else{
-      setPassValid(false);
-      setErrorPassword("Incorrect Password")
-    }
   }
 
   function handleLoginClick(e){
     e.preventDefault();
-
-    if (emailValid !== true || passValid !== true) {
-      alert('Check your crendials again');
-    } else {
-      setEmail("");
-      setPassword("")
-      
-      window.location.href="/todo";
-
+    //email
+    if(localStorage.getItem(email)!=null){
+      setEmailValid(true);
+      setErrorEmail('');
+      //password
+      const userData = JSON.parse(localStorage.getItem(email));
+      if(userData.password===password){
+        setPassValid(true);
+        setErrorPassword('');
+        window.location.href="/todo"
+        setEmail("");
+        setPassword("")
+      }else{
+        setPassValid(false);
+        setErrorPassword("Incorrect Password")
+      }
+    }
+    else{
+      setEmailValid(false);
+      setErrorEmail("Account across this email does not exist");
     }
 
   }

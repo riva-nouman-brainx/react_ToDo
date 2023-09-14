@@ -1,11 +1,11 @@
 import React from 'react'
 import password_icon from "./Assets/password.png"
 import "../style/EmailConfirm.css"
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 
 function EmailConfirm() {
   return (
-    <div className='container'>
+  <div className='container'>
     <form action="">
       <div className="header">
         <div className="text">Email Confirmation</div>
@@ -17,7 +17,7 @@ function EmailConfirm() {
           <input type="email" placeholder='OTP'/>
         </div>
       </div>
-      <div className="back">Back to <span> Login </span>  </div>
+      <div className="back">Back to <span><Link to="/"> Login </Link></span>  </div>
       <div className="submit-container">
         <button className="submit"> Confirm </button>
       </div>
