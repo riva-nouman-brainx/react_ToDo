@@ -1,5 +1,5 @@
 import React from 'react'
-import {password_icon} from "../config.js"
+import password_icon from "./Assets/password.png"
 import "../style/EmailConfirm.css"
 import { Link } from 'react-router';
 

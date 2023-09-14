@@ -1,5 +1,5 @@
 import React from 'react'
-import {email_icon} from "../config.js"
+import email_icon from "./Assets/email.png"
 import "../style/ForgotPass.css"
 import { Link } from 'react-router-dom';
 
