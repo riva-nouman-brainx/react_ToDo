@@ -21,13 +21,17 @@ function SignUp() {
   const [errorEmail, setErrorEmail] = useState("");
   const [errorPassword, setErrorPassword] = useState("");
   const [errorConfirm, setErrorConfirm] = useState("");
+  let user={
+    name: "",
+    password:""
+  }
 
 
 
   function handleUsername(e) {
     setUsername(e.target.value);
-    setUsernameValid(isValidEmailRegex.test(e.target.value));
-    if(usernameValid==true){
+    setUsernameValid(isValidUsernameRegex.test(e.target.value));
+    if(usernameValid===true){
       setErrorUsername("")
     }else{
       setErrorUsername("Username is not valid")
@@ -36,21 +40,21 @@ function SignUp() {
   
   function handleEmail(e) {
     setEmail(e.target.value);
-    setEmailValid(isValidUsernameRegex.test(e.target.value));
-    if(emailValid==true){
-      setErrorUsername("")
+    setEmailValid(isValidEmailRegex.test(e.target.value));
+    if(emailValid===true){
+      setErrorEmail("")
     }else{
-      setErrorUsername("Email is not valid")
+      setErrorEmail("Email is not valid")
     }
   }
 
   function handlePassword(e) {
     setPassword(e.target.value);
     setPasswordValid(isValidPasswordRegex.test(e.target.value));
-    if(passwordValid==true){
-      setErrorUsername("")
+    if(passwordValid===true){
+      setErrorPassword("")
     }else{
-      setErrorUsername("Password is not valid")
+      setErrorPassword("Password is not valid")
     }
   }
 
@@ -75,7 +79,11 @@ function SignUp() {
       setUsername("");
       setPassword("")
       setConfirm("");
+      user.name=username;
+      user.password=password;
+      localStorage.setItem(email, JSON.stringify(user));
       alert('Sign up successful!');
+      window.location.href="/";
 
     }
   }
@@ -111,7 +119,7 @@ function SignUp() {
         </div>
         <div className="login">Already have an account? <span><Link to="/">Login</Link></span> </div>
         <div className="submit-container">
-          <button className="submit" onClick={handleSignUpClick}> Sign Up</button>
+          <button className="submit" onClick={handleSignUpClick}>Sign Up</button>
         </div>
       </form>
     </div>

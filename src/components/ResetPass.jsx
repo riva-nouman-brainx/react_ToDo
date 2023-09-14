@@ -1,9 +1,7 @@
 import React from 'react'
 import { useState } from 'react';
-import user_icon from "./Assets/person.png"
-import email_icon from "./Assets/email.png"
 import password_icon from "./Assets/password.png"
-import {isValidUsernameRegex, isValidPasswordRegex, isValidEmailRegex} from "../config.js"
+import {isValidPasswordRegex} from "../config.js"
 import "../style/ResetPass.css"
 import {Link} from "react-router-dom"
 
