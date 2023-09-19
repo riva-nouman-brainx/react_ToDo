@@ -2,9 +2,12 @@ import React from 'react'
 import {useState} from 'react'
 // import {Link} from "react-router-dom"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {useDispatch, useSelector} from "react-redux"
 import { faList } from '@fortawesome/free-solid-svg-icons';
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 import "../style/ToDo.css"
+import {logout} from "../slices/UserSlice.js"
+import { useNavigate } from 'react-router-dom';
 
 
 function ToDo() {
@@ -13,6 +16,9 @@ function ToDo() {
   const [taskStatusList, setTaskStatusList] = useState([]); 
   const [editEnabled, setEditEnabled] = useState([]); //edit button clicked
   const [editInputVal, setEditInputVal]=useState(''); //stores value that is being entered 
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   function handleInput(e){
     setInput(e.target.value); 
@@ -86,8 +92,11 @@ function ToDo() {
       handleUpdateList(i); // Call handleUpdateList when Enter key is pressed
     }
   }
+  
   function handleLogout(e){
-
+    e.preventDefault();
+    dispatch(logout());
+    navigate("/")
   }
 
   return (
