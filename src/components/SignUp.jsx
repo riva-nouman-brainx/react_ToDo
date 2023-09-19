@@ -83,7 +83,7 @@ function SignUp() {
       user.password=password;
       localStorage.setItem(email, JSON.stringify(user));
       alert('Sign up successful!');
-      window.location.href="/";
+      window.location.href="/todo";
 
     }
   }

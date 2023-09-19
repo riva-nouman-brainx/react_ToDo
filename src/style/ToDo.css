@@ -7,6 +7,19 @@
     background-color: #fff;
     padding-bottom: 30px;
 }
+.logout-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 30px;
+    color: #fff;
+    background-color: #0f0c29;
+    font-weight: 700;
+    cursor: pointer; 
+    margin-left: 83.5%;   
+    border: none;
+}
 .header{
     display: flex;
     flex-direction: column;

@@ -8,11 +8,11 @@ import "../style/ToDo.css"
 
 
 function ToDo() {
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState(""); 
   const [todoList, setTodoList] = useState([]);
   const [taskStatusList, setTaskStatusList] = useState([]); 
-  const [editEnabled, setEditEnabled] = useState([]); 
-  const [editInputVal, setEditInputVal]=useState('');
+  const [editEnabled, setEditEnabled] = useState([]); //edit button clicked
+  const [editInputVal, setEditInputVal]=useState(''); //stores value that is being entered 
 
   function handleInput(e){
     setInput(e.target.value); 
@@ -22,8 +22,10 @@ function ToDo() {
     const updatedEditEnabled = [...editEnabled];
     updatedEditEnabled[i] = !updatedEditEnabled[i];
     setEditEnabled(updatedEditEnabled);
+    setEditInputVal(todoList[i]);
 
   }
+
   function handleTrashClick(i){
     const updateListData=todoList.filter((elem,id)=>{
       return i!==id;
@@ -34,10 +36,11 @@ function ToDo() {
     }) 
     setTaskStatusList(updatedTaskStatusData);
     const updatedEditEnabled = [...editEnabled];
-    updatedEditEnabled.splice(i, 1); // Remove the element at index i
-    setEditEnabled(updatedEditEnabled); // Update the state
+    updatedEditEnabled.splice(i, 1); 
+    setEditEnabled(updatedEditEnabled); 
 
   }
+
   function handleAddCLick(e){
     if(input!==""){
       setTodoList((todoList)=>{
@@ -73,13 +76,25 @@ function ToDo() {
       const updatedEditEnabled = [...editEnabled];
       updatedEditEnabled[i] = false;
       setEditEnabled(updatedEditEnabled);
+
+      setEditInputVal('');
     }
 
   }
-  
+  function handleEditEnter(e, i) {
+    if (e.key === 'Enter') {
+      handleUpdateList(i); // Call handleUpdateList when Enter key is pressed
+    }
+  }
+  function handleLogout(e){
+
+  }
 
   return (
   <div className='container'>
+    <div>
+      <button className="logout-btn" onClick={handleLogout}> Logout </button>
+    </div>
       <div className="header">
         <div className="text">My ToDo List</div>
         <div className="underline"></div>
@@ -100,7 +115,14 @@ function ToDo() {
           <div key={i}>
             <div className='task-container'> 
               {editEnabled[i] ? (
-                <input type="text" className='input-1' checked={isChecked} onChange={handleEditInput} onBlur={() => handleUpdateList(i)}/>
+                <input type="text" 
+                className='input-1' 
+                value={editInputVal} 
+                checked={isChecked} 
+                onChange={handleEditInput} 
+                onBlur={() => handleUpdateList(i)}
+                onKeyDown={(e)=>handleEditEnter(e,i)}
+                />
               ) : (
                 <div className='in-line'>
                   <input type="checkbox" checked={isChecked} onChange={() => handleCheckboxChange(i)} />
