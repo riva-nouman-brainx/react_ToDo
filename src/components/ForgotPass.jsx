@@ -3,11 +3,20 @@ import email_icon from "./Assets/email.png"
 import "../style/ForgotPass.css"
 import { Link } from 'react-router-dom';
 import {useState} from 'react'
+import { useNavigate } from 'react-router-dom';
+import {useDispatch, useSelector} from "react-redux"
+import {getEmailError, getSuccess, forgotPass} from "../slices/UserSlice.js"
+
+
+
 
 function ForgotPass() {
   const [email, setEmail]=useState('');
-  const [emailValid, setEmailValid]=useState(false);
-  const [errorEmail, setErrorEmail] = useState("");
+
+  const navigate=useNavigate();
+  const dispatch=useDispatch();
+  const success=useSelector(getSuccess);
+  const errorEmail=useSelector(getEmailError);
 
 
   function handleEmail(e){
@@ -16,19 +25,13 @@ function ForgotPass() {
 
   function handleConfirmClick(e){
     e.preventDefault();
-    if(localStorage.getItem(email)!=null){
-   
-      setEmailValid(true);
-      setErrorEmail('');
-      window.location.href="/EmailConfirm";
-    }
-    else{
-      setEmailValid(false);
-      setErrorEmail("Invalid email");
+    if (email) {
+      dispatch(forgotPass({email}))
+      if (success){
+        navigate('/EmailConfirm')
+      }
     }
   }
-
-  
 
   return (
     <div className='container'>
@@ -41,7 +44,7 @@ function ForgotPass() {
           <div className="input">
             <img src={email_icon} alt="" />
             <input type="email" placeholder='Email'onChange={handleEmail}/>
-            <div>{errorEmail}</div>
+            {errorEmail && <div> {errorEmail}</div>}
           </div>
         </div>
         <div className="back">Back to <span><Link to="/"> Login </Link></span>  </div>
